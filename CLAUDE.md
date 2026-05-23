@@ -1,4 +1,10 @@
-# Atemschutzbuch — Landing Page
+# Atemschutzbuch — Projektdokumentation
+
+## Arbeitsanweisung für Claude
+
+**Kein Code schreiben, bevor es nicht explizit angewiesen wird. Nicht danach fragen.**
+
+---
 
 ## Was ist das?
 
@@ -12,29 +18,52 @@ Danach werden bekannte Feuerwehr-Chefs befragt (Go/No-Go für MVP).
 
 ---
 
-## Repo-Layout
+## Repo-Struktur (Monorepo)
 
 ```
 /
-├── index.html      # One-Pager, alle Sections inline
-├── style.css       # Globale Styles, Custom Properties, Mobile-First
-├── main.js         # Scroll-Effekte, Form-Handler, Reveal-Animationen
-├── workflow.js     # Interaktiver Freigabe-Workflow-Graph (SVG + vanilla JS)
-├── assets/
-│   ├── mockups/    # SVG App-Screen-Mockups (inline in HTML eingebettet)
-│   └── icons/      # Inline SVG Icons
-└── CLAUDE.md       # Diese Datei
+├── website/        ← Cloudflare Pages (Root: website/, Watch: website/**)
+│   ├── index.html
+│   ├── style.css
+│   ├── main.js
+│   ├── workflow.js
+│   └── assets/
+│       ├── mockups/
+│       └── icons/
+├── app/            ← Später: App-Code → VPS-Deployment (Coolify / GitHub Actions)
+├── CLAUDE.md       ← Diese Datei
+└── PLAN.md         ← Detaillierter Implementierungsplan Website
 ```
 
 ---
 
-## Tech-Constraints
+## Cloudflare Pages Konfiguration
+
+| Einstellung | Wert |
+|---|---|
+| Root directory | `website` |
+| Build command | *(leer)* |
+| Build output directory | `website` |
+| Build watch paths (include) | `website/**` |
+
+→ Commits in `app/` triggern keinen Website-Build.
+
+---
+
+## App-Deployment (später)
+
+- **Coolify** auf eigenem VPS (Hetzner o.ä.) — Monorepo-fähig, `app/` als Root konfigurierbar
+- Alternative: GitHub Actions → SSH auf VPS (`cd app/ && docker compose up -d`)
+- Kein Vendor-Lock-in zu Cloudflare
+
+---
+
+## Tech-Constraints (Website)
 
 - **Kein** npm, kein Node.js, kein Build-Step, kein Framework
 - Plain HTML + CSS + vanilla JS
 - Google Fonts via CDN (Fraunces für Headings, Source Serif 4 für Body)
 - Scripts am Ende von `<body>`, kein render-blocking
-- Cloudflare Pages deployt direkt aus Repo-Root (Build command: leer, Output: `/`)
 
 ---
 
@@ -76,7 +105,7 @@ Umsetzung: SVG + vanilla JS, `document.createElementNS`, keine externe Bibliothe
 
 ## Formspree
 
-Formular-Endpoint in `index.html`:
+Formular-Endpoint in `website/index.html`:
 ```html
 <form action="https://formspree.io/f/PLACEHOLDER" ...>
 ```
@@ -87,11 +116,9 @@ Fallback ohne Account: `action="mailto:rene.kamp@me.com"` + JS-Fetch-Handler ent
 
 ## Lokale Entwicklung
 
-Kein Build-Step nötig:
 ```bash
+cd website/
 python3 -m http.server 8080
-# oder
-npx -y serve .
 ```
 
 Browser öffnen: http://localhost:8080
@@ -100,9 +127,8 @@ Browser öffnen: http://localhost:8080
 
 ## Branch-Strategie
 
-- `main` = production → automatisches Cloudflare-Deployment
-- Features auf eigenen Branches, Merge via PR
-- Aktueller Feature-Branch: `claude/atemschutzbuch-landing-oEFM1`
+- `main` = production → automatisches Cloudflare-Deployment (nur wenn `website/**` geändert)
+- Features auf eigenen Branches, Merge via PR nach `main`
 
 ---
 
@@ -121,7 +147,7 @@ https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 
 | ID | Titel | Status |
 |---|---|---|
-| REN-35 | One-Pager: Konzept & Struktur | Todo |
+| REN-35 | One-Pager: Konzept & Struktur | In Progress |
 | REN-36 | One-Pager: Design & Implementierung | Todo |
 | REN-37 | Interaktiver Freigabe-Workflow-Graph | Todo (Sub von REN-36) |
 | REN-38 | App-Mockups für Feature-Darstellung | Todo (Sub von REN-36) |
