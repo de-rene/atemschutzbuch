@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atemschutzbuch — Logo v3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #ddd; padding: 2.5rem 1.5rem 4rem; }
+
+    .page-header { text-align: center; margin-bottom: 2.5rem; }
+    .page-header h1 { font-size: 1rem; font-weight: 600; color: #111; }
+    .page-header p { font-size: 0.8125rem; color: #888; margin-top: 0.35rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+      max-width: 1080px; margin: 0 auto;
+    }
+
+    .card {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.2s, transform 0.15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+    .card.selected { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,0.15); }
+
+    .card-header {
+      padding: 0.75rem 1.25rem; border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .card-letter {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #111; color: #fff;
+      font-size: 0.6875rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.15s;
+    }
+    .card.selected .card-letter { background: #2563eb; }
+    .card-name { font-size: 0.875rem; font-weight: 700; color: #111; }
+    .card-desc { font-size: 0.75rem; color: #888; }
+
+    .preview-dark {
+      background: #0f0f0f;
+      padding: 2.25rem 1.75rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+    .lbl { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 0.4rem; text-align: center; }
+
+    .nav-sim {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: 8px;
+      padding: 0.6rem 0.875rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-right { display: flex; gap: 0.875rem; align-items: center; }
+    .nl { font-size: 0.7rem; color: rgba(255,255,255,0.28); }
+    .ncta { background: #dc2626; color: #fff; font-size: 0.6875rem; font-weight: 600; padding: 0.3rem 0.7rem; border-radius: 5px; }
+
+    .preview-light {
+      background: #f8f8f8; border-top: 1px solid #eee;
+      padding: 1.125rem 1.75rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .light-note { font-size: 0.6875rem; color: #ccc; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Logo v3 — Echte Maskenform</h1>
+  <p>Kuppelsilhouette · X-Träger im Visier · Roter Knopf am Kinnventil</p>
+</div>
+
+<div class="grid">
+
+  <!-- ══════════════════════════════════
+       A: VOLLE SILHOUETTE (solid red)
+       ══════════════════════════════════ -->
+  <div class="card" onclick="select(this)">
+    <div class="card-header">
+      <div class="card-letter">A</div>
+      <div>
+        <div class="card-name">Volle Silhouette</div>
+        <div class="card-desc">Rot ausgefüllt, X-Träger als dunkle Fläche, roter Knopf</div>
+      </div>
+    </div>
+    <div class="preview-dark">
+      <div>
+        <div class="lbl">Groß</div>
+        <div style="display:flex;align-items:center;gap:16px">
+
+          <svg width="60" height="76" viewBox="0 0 60 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer mask body: dome top, wide middle, narrow chin -->
+            <!-- Top clip mount -->
+            <rect x="24" y="0" width="12" height="5" rx="2.5" fill="#dc2626"/>
+            <!-- Main body: dome-shaped outer shell -->
+            <path d="
+              M30 5
+              C14 5 5 13 5 24
+              L5 46
+              C5 56 12 63 22 65
+              L22 68
+              C22 72 25.5 75 30 75
+              C34.5 75 38 72 38 68
+              L38 65
+              C48 63 55 56 55 46
+              L55 24
+              C55 13 46 5 30 5 Z
+            " fill="#dc2626"/>
+
+            <!-- Visor: large panoramic window taking up most of the face -->
+            <path d="
+              M12 21
+              C12 15 19 12 30 12
+              C41 12 48 15 48 21
+              L48 44
+              C48 51 41 55 30 55
+              C19 55 12 51 12 44 Z
+            " fill="#1a2030"/>
+
+            <!-- X-Träger (harness cross inside visor) — 4 diagonal struts -->
+            <!-- from top-left corner toward center -->
+            <polygon points="13,14 21,14 32,36 24,36" fill="#0a0e18"/>
+            <!-- from top-right corner toward center -->
+            <polygon points="47,14 39,14 28,36 36,36" fill="#0a0e18"/>
+            <!-- from center toward bottom-left -->
+            <polygon points="24,36 32,36 21,54 13,54" fill="#0a0e18"/>
+            <!-- from center toward bottom-right -->
+            <polygon points="36,36 28,36 39,54 47,54" fill="#0a0e18"/>
+
+            <!-- Visor glass tint / slight reflection top-left -->
+            <path d="M14 19 C16 14 22 12 30 12 L30 22 C22 22 16 21 14 19 Z" fill="rgba(255,255,255,0.06)"/>
+
+            <!-- Chin valve housing (round protrusion below visor) -->
+            <path d="M21 57 L39 57 C39 57 41 66 41 69 C41 73 36 75 30 75 C24 75 19 73 19 69 C19 66 21 57 21 57 Z" fill="#b91c1c"/>
+
+            <!-- Red button (the iconic red push-button) — slightly brighter -->
+            <rect x="26.5" y="59" width="7" height="5.5" rx="1.5" fill="#ef4444"/>
+            <rect x="27.5" y="59.5" width="5" height="2" rx="1" fill="rgba(255,255,255,0.25)"/>
+
+            <!-- Valve port circle below button -->
+            <circle cx="30" cy="70" r="3.5" fill="#0f0f0f"/>
+            <circle cx="30" cy="70" r="2" fill="#991b1b"/>
+          </svg>
+
+          <div>
+            <div style="font-size:1.625rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.05">Atemschutz</div>
+            <div style="font-size:1.625rem;font-weight:800;color:#dc2626;letter-spacing:-0.03em;line-height:1.05">buch</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div style="width:100%">
+        <div class="lbl">Navigation (24px)</div>
+        <div class="nav-sim">
+          <div style="display:flex;align-items:center;gap:9px">
+            <svg width="19" height="24" viewBox="0 0 60 76" fill="none">
+              <rect x="24" y="0" width="12" height="5" rx="2.5" fill="#dc2626"/>
+              <path d="M30 5 C14 5 5 13 5 24 L5 46 C5 56 12 63 22 65 L22 68 C22 72 25.5 75 30 75 C34.5 75 38 72 38 68 L38 65 C48 63 55 56 55 46 L55 24 C55 13 46 5 30 5 Z" fill="#dc2626"/>
+              <path d="M12 21 C12 15 19 12 30 12 C41 12 48 15 48 21 L48 44 C48 51 41 55 30 55 C19 55 12 51 12 44 Z" fill="#1a2030"/>
+              <polygon points="13,14 21,14 32,36 24,36" fill="#0a0e18"/>
+              <polygon points="47,14 39,14 28,36 36,36" fill="#0a0e18"/>
+              <polygon points="24,36 32,36 21,54 13,54" fill="#0a0e18"/>
+              <polygon points="36,36 28,36 39,54 47,54" fill="#0a0e18"/>
+              <path d="M21 57 L39 57 C39 57 41 66 41 69 C41 73 36 75 30 75 C24 75 19 73 19 69 C19 66 21 57 21 57 Z" fill="#b91c1c"/>
+              <rect x="26.5" y="59" width="7" height="5.5" rx="1.5" fill="#ef4444"/>
+            </svg>
+            <span style="font-size:0.875rem;font-weight:700;color:#fff;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+          </div>
+          <div class="nav-right">
+            <span class="nl">Features</span><span class="nl">Für wen?</span>
+            <span class="ncta">Vormerken</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-light">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="19" height="24" viewBox="0 0 60 76" fill="none">
+          <rect x="24" y="0" width="12" height="5" rx="2.5" fill="#dc2626"/>
+          <path d="M30 5 C14 5 5 13 5 24 L5 46 C5 56 12 63 22 65 L22 68 C22 72 25.5 75 30 75 C34.5 75 38 72 38 68 L38 65 C48 63 55 56 55 46 L55 24 C55 13 46 5 30 5 Z" fill="#dc2626"/>
+          <path d="M12 21 C12 15 19 12 30 12 C41 12 48 15 48 21 L48 44 C48 51 41 55 30 55 C19 55 12 51 12 44 Z" fill="#111"/>
+          <polygon points="13,14 21,14 32,36 24,36" fill="#0a0e18"/>
+          <polygon points="47,14 39,14 28,36 36,36" fill="#0a0e18"/>
+          <polygon points="24,36 32,36 21,54 13,54" fill="#0a0e18"/>
+          <polygon points="36,36 28,36 39,54 47,54" fill="#0a0e18"/>
+          <path d="M21 57 L39 57 C39 57 41 66 41 69 C41 73 36 75 30 75 C24 75 19 73 19 69 C19 66 21 57 21 57 Z" fill="#b91c1c"/>
+          <rect x="26.5" y="59" width="7" height="5.5" rx="1.5" fill="#ef4444"/>
+        </svg>
+        <span style="font-size:0.9rem;font-weight:700;color:#111;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+      </div>
+      <span class="light-note">Heller Hintergrund</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       B: DARK + WHITE (invertiert)
+       ══════════════════════════════════ -->
+  <div class="card" onclick="select(this)">
+    <div class="card-header">
+      <div class="card-letter">B</div>
+      <div>
+        <div class="card-name">Dunkel mit weißer Maske</div>
+        <div class="card-desc">Schwarze Silhouette, weißes Visier, roter Knopf — mehr Tiefe</div>
+      </div>
+    </div>
+    <div class="preview-dark">
+      <div>
+        <div class="lbl">Groß</div>
+        <div style="display:flex;align-items:center;gap:16px">
+
+          <svg width="60" height="76" viewBox="0 0 60 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="24" y="0" width="12" height="5" rx="2.5" fill="rgba(255,255,255,0.5)"/>
+            <!-- Outer body: dark -->
+            <path d="M30 5 C14 5 5 13 5 24 L5 46 C5 56 12 63 22 65 L22 68 C22 72 25.5 75 30 75 C34.5 75 38 72 38 68 L38 65 C48 63 55 56 55 46 L55 24 C55 13 46 5 30 5 Z" fill="#e8e8e8"/>
+            <!-- Visor: very light / almost white -->
+            <path d="M12 21 C12 15 19 12 30 12 C41 12 48 15 48 21 L48 44 C48 51 41 55 30 55 C19 55 12 51 12 44 Z" fill="white"/>
+            <!-- X cross: dark struts on white -->
+            <polygon points="13,14 21,14 32,36 24,36" fill="#d0d0d0"/>
+            <polygon points="47,14 39,14 28,36 36,36" fill="#d0d0d0"/>
+            <polygon points="24,36 32,36 21,54 13,54" fill="#d0d0d0"/>
+            <polygon points="36,36 28,36 39,54 47,54" fill="#d0d0d0"/>
+            <!-- subtle visor tint -->
+            <path d="M12 21 C12 15 19 12 30 12 C41 12 48 15 48 21 L48 44 C48 51 41 55 30 55 C19 55 12 51 12 44 Z" fill="rgba(0,20,60,0.08)"/>
+            <!-- Chin housing -->
+            <path d="M21 57 L39 57 C39 57 41 66 41 69 C41 73 36 75 30 75 C24 75 19 73 19 69 C19 66 21 57 21 57 Z" fill="#c8c8c8"/>
+            <!-- Red button — the one pop of colour -->
+            <rect x="26.5" y="59" width="7" height="5.5" rx="1.5" fill="#dc2626"/>
+            <rect x="27.5" y="59.5" width="5" height="2" rx="1" fill="rgba(255,255,255,0.35)"/>
+            <circle cx="30" cy="70" r="3.5" fill="#999"/>
+            <circle cx="30" cy="70" r="2" fill="#bbb"/>
+          </svg>
+
+          <div>
+            <div style="font-size:1.625rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.05">Atemschutz</div>
+            <div style="font-size:1.625rem;font-weight:800;color:#dc2626;letter-spacing:-0.03em;line-height:1.05">buch</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%">
+        <div class="lbl">Navigation (24px)</div>
+        <div class="nav-sim">
+          <div style="display:flex;align-items:center;gap:9px">
+            <svg width="19" height="24" viewBox="0 0 60 76" fill="none">
+              <path d="M30 5 C14 5 5 13 5 24 L5 46 C5 56 12 63 22 65 L22 68 C22 72 25.5 75 30 75 C34.5 75 38 72 38 68 L38 65 C48 63 55 56 55 46 L55 24 C55 13 46 5 30 5 Z" fill="#e0e0e0"/>
+              <path d="M12 21 C12 15 19 12 30 12 C41 12 48 15 48 21 L48 44 C48 51 41 55 30 55 C19 55 12 51 12 44 Z" fill="white"/>
+              <polygon points="13,14 21,14 32,36 24,36" fill="#d0d0d0"/>
+              <polygon points="47,14 39,14 28,36 36,36" fill="#d0d0d0"/>
+              <polygon points="24,36 32,36 21,54 13,54" fill="#d0d0d0"/>
+              <polygon points="36,36 28,36 39,54 47,54" fill="#d0d0d0"/>
+              <path d="M21 57 L39 57 C39 57 41 66 41 69 C41 73 36 75 30 75 C24 75 19 73 19 69 C19 66 21 57 21 57 Z" fill="#c0c0c0"/>
+              <rect x="26.5" y="59" width="7" height="5.5" rx="1.5" fill="#dc2626"/>
+            </svg>
+            <span style="font-size:0.875rem;font-weight:700;color:#fff;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+          </div>
+          <div class="nav-right">
+            <span class="nl">Features</span><span class="nl">Für wen?</span>
+            <span class="ncta">Vormerken</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-light">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="19" height="24" viewBox="0 0 60 76" fill="none">
+          <path d="M30 5 C14 5 5 13 5 24 L5 46 C5 56 12 63 22 65 L22 68 C22 72 25.5 75 30 75 C34.5 75 38 72 38 68 L38 65 C48 63 55 56 55 46 L55 24 C55 13 46 5 30 5 Z" fill="#222"/>
+          <path d="M12 21 C12 15 19 12 30 12 C41 12 48 15 48 21 L48 44 C48 51 41 55 30 55 C19 55 12 51 12 44 Z" fill="#e8f0ff"/>
+          <polygon points="13,14 21,14 32,36 24,36" fill="rgba(0,0,0,0.1)"/>
+          <polygon points="47,14 39,14 28,36 36,36" fill="rgba(0,0,0,0.1)"/>
+          <polygon points="24,36 32,36 21,54 13,54" fill="rgba(0,0,0,0.1)"/>
+          <polygon points="36,36 28,36 39,54 47,54" fill="rgba(0,0,0,0.1)"/>
+          <path d="M21 57 L39 57 C39 57 41 66 41 69 C41 73 36 75 30 75 C24 75 19 73 19 69 C19 66 21 57 21 57 Z" fill="#333"/>
+          <rect x="26.5" y="59" width="7" height="5.5" rx="1.5" fill="#dc2626"/>
+        </svg>
+        <span style="font-size:0.9rem;font-weight:700;color:#111;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+      </div>
+      <span class="light-note">Heller Hintergrund</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       C: BADGE (quadratisch, App-Icon)
+       ══════════════════════════════════ -->
+  <div class="card" onclick="select(this)">
+    <div class="card-header">
+      <div class="card-letter">C</div>
+      <div>
+        <div class="card-name">App-Badge</div>
+        <div class="card-desc">Rotes Quadrat, weiße Maske — funktioniert als Favicon & App-Icon</div>
+      </div>
+    </div>
+    <div class="preview-dark">
+      <div>
+        <div class="lbl">Groß</div>
+        <div style="display:flex;align-items:center;gap:16px">
+
+          <!-- Badge: red background, white mask silhouette -->
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="64" height="64" rx="16" fill="#dc2626"/>
+            <!-- Top clip -->
+            <rect x="27" y="2" width="10" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+            <!-- Mask outer body white -->
+            <path d="M32 7 C19 7 12 13 12 22 L12 40 C12 48 18 53 26 54.5 L26 57 C26 60 28.5 62 32 62 C35.5 62 38 60 38 57 L38 54.5 C46 53 52 48 52 40 L52 22 C52 13 45 7 32 7 Z" fill="white"/>
+            <!-- Visor: slightly transparent so red shows through subtly -->
+            <path d="M16 22 C16 17 22 15 32 15 C42 15 48 17 48 22 L48 40 C48 46 42 50 32 50 C22 50 16 46 16 40 Z" fill="#dc2626"/>
+            <!-- X cross struts: white on red -->
+            <polygon points="17,17 23,17 33,33 27,33" fill="rgba(255,255,255,0.22)"/>
+            <polygon points="47,17 41,17 31,33 37,33" fill="rgba(255,255,255,0.22)"/>
+            <polygon points="27,33 33,33 23,49 17,49" fill="rgba(255,255,255,0.22)"/>
+            <polygon points="37,33 31,33 41,49 47,49" fill="rgba(255,255,255,0.22)"/>
+            <!-- small visor highlight -->
+            <path d="M18 20 C20 16 25 15 32 15 L32 22 C25 22 20 21 18 20 Z" fill="rgba(255,255,255,0.12)"/>
+            <!-- Chin area: white -->
+            <path d="M25 52 L39 52 C39 52 40 58 40 60 C40 62 36.5 62 32 62 C27.5 62 24 62 24 60 C24 58 25 52 25 52 Z" fill="white"/>
+            <!-- Red button on chin: stays red since chin is white now -->
+            <rect x="28.5" y="53.5" width="7" height="5" rx="1.5" fill="#dc2626"/>
+            <rect x="29.5" y="54" width="5" height="1.5" rx="0.75" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+
+          <div>
+            <div style="font-size:1.625rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.05">Atemschutz</div>
+            <div style="font-size:1.625rem;font-weight:800;color:#dc2626;letter-spacing:-0.03em;line-height:1.05">buch</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%">
+        <div class="lbl">Navigation (24px)</div>
+        <div class="nav-sim">
+          <div style="display:flex;align-items:center;gap:9px">
+            <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+              <rect width="64" height="64" rx="16" fill="#dc2626"/>
+              <path d="M32 7 C19 7 12 13 12 22 L12 40 C12 48 18 53 26 54.5 L26 57 C26 60 28.5 62 32 62 C35.5 62 38 60 38 57 L38 54.5 C46 53 52 48 52 40 L52 22 C52 13 45 7 32 7 Z" fill="white"/>
+              <path d="M16 22 C16 17 22 15 32 15 C42 15 48 17 48 22 L48 40 C48 46 42 50 32 50 C22 50 16 46 16 40 Z" fill="#dc2626"/>
+              <polygon points="17,17 23,17 33,33 27,33" fill="rgba(255,255,255,0.25)"/>
+              <polygon points="47,17 41,17 31,33 37,33" fill="rgba(255,255,255,0.25)"/>
+              <polygon points="27,33 33,33 23,49 17,49" fill="rgba(255,255,255,0.25)"/>
+              <polygon points="37,33 31,33 41,49 47,49" fill="rgba(255,255,255,0.25)"/>
+              <path d="M25 52 L39 52 C39 52 40 58 40 60 C40 62 36.5 62 32 62 C27.5 62 24 62 24 60 C24 58 25 52 25 52 Z" fill="white"/>
+              <rect x="28.5" y="53.5" width="7" height="5" rx="1.5" fill="#dc2626"/>
+            </svg>
+            <span style="font-size:0.875rem;font-weight:700;color:#fff;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+          </div>
+          <div class="nav-right">
+            <span class="nl">Features</span><span class="nl">Für wen?</span>
+            <span class="ncta">Vormerken</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-light">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+          <rect width="64" height="64" rx="16" fill="#dc2626"/>
+          <path d="M32 7 C19 7 12 13 12 22 L12 40 C12 48 18 53 26 54.5 L26 57 C26 60 28.5 62 32 62 C35.5 62 38 60 38 57 L38 54.5 C46 53 52 48 52 40 L52 22 C52 13 45 7 32 7 Z" fill="white"/>
+          <path d="M16 22 C16 17 22 15 32 15 C42 15 48 17 48 22 L48 40 C48 46 42 50 32 50 C22 50 16 46 16 40 Z" fill="#dc2626"/>
+          <polygon points="17,17 23,17 33,33 27,33" fill="rgba(255,255,255,0.25)"/>
+          <polygon points="47,17 41,17 31,33 37,33" fill="rgba(255,255,255,0.25)"/>
+          <polygon points="27,33 33,33 23,49 17,49" fill="rgba(255,255,255,0.25)"/>
+          <polygon points="37,33 31,33 41,49 47,49" fill="rgba(255,255,255,0.25)"/>
+          <path d="M25 52 L39 52 C39 52 40 58 40 60 C40 62 36.5 62 32 62 C27.5 62 24 62 24 60 C24 58 25 52 25 52 Z" fill="white"/>
+          <rect x="28.5" y="53.5" width="7" height="5" rx="1.5" fill="#dc2626"/>
+        </svg>
+        <span style="font-size:0.9rem;font-weight:700;color:#111;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+      </div>
+      <span class="light-note">Heller Hintergrund</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function select(card) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+</script>
+</body>
+</html>

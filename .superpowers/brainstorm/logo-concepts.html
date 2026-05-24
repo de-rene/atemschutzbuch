@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atemschutzbuch — Logo-Konzepte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #e2e2e2; padding: 2.5rem 1.5rem 4rem; }
+
+    .page-header { text-align: center; margin-bottom: 2.5rem; }
+    .page-header h1 { font-size: 1rem; font-weight: 600; color: #111; }
+    .page-header p { font-size: 0.8125rem; color: #888; margin-top: 0.35rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.2s, transform 0.15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.14); }
+    .card.selected { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,0.15); }
+
+    .card-header {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .card-letter {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #111; color: #fff;
+      font-size: 0.6875rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .card.selected .card-letter { background: #2563eb; }
+    .card-meta-name { font-size: 0.875rem; font-weight: 700; color: #111; }
+    .card-meta-desc { font-size: 0.75rem; color: #888; }
+
+    /* Preview area: dark bg to show logo on dark */
+    .preview-dark {
+      background: #0f0f0f;
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+    .preview-light {
+      background: #fff;
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid #f0f0f0;
+    }
+    .preview-label {
+      font-size: 0.625rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #bbb;
+      margin-bottom: 0.5rem;
+    }
+    .preview-label-dark { color: rgba(255,255,255,0.25); }
+
+    /* Nav simulation */
+    .nav-sim {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 0.625rem 0.875rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-sim-light {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 0.625rem 0.875rem;
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .nav-links-sim { display: flex; gap: 0.875rem; align-items: center; }
+    .nav-link-sim { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+    .nav-link-sim-light { font-size: 0.7rem; color: #aaa; }
+    .nav-cta-sim {
+      background: #dc2626; color: #fff;
+      font-size: 0.6875rem; font-weight: 600;
+      padding: 0.3rem 0.7rem; border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Logo-Konzepte — Atemschutzbuch</h1>
+  <p>Alle mit DM Sans, in Groß (Hero) und Klein (Navigation). Klicke deine Wahl.</p>
+</div>
+
+<div class="grid">
+
+  <!-- ── A: MASK HORIZONTAL ── -->
+  <div class="card" onclick="this.classList.toggle('selected')">
+    <div class="card-header">
+      <div class="card-letter">A</div>
+      <div>
+        <div class="card-meta-name">Maske + Wortmarke</div>
+        <div class="card-meta-desc">Icon links, Name rechts — klassisch horizontal</div>
+      </div>
+    </div>
+
+    <div class="preview-dark">
+      <div class="preview-label preview-label-dark">Groß</div>
+      <!-- LARGE LOGO A -->
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <!-- outer mask body -->
+          <rect x="4" y="8" width="44" height="36" rx="20" fill="#dc2626"/>
+          <!-- visor lens -->
+          <ellipse cx="26" cy="24" rx="15" ry="12" fill="#0f0f0f"/>
+          <!-- lens inner highlight -->
+          <ellipse cx="21" cy="20" rx="6" ry="4" fill="rgba(255,255,255,0.08)"/>
+          <!-- demand valve bottom -->
+          <rect x="20" y="41" width="12" height="7" rx="3.5" fill="#dc2626"/>
+          <!-- side strap ports L -->
+          <circle cx="6" cy="26" r="4" fill="#b91c1c"/>
+          <!-- side strap ports R -->
+          <circle cx="46" cy="26" r="4" fill="#b91c1c"/>
+          <!-- valve center dot -->
+          <circle cx="26" cy="44.5" r="2" fill="#b91c1c"/>
+        </svg>
+        <div>
+          <div style="font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1">Atemschutz</div>
+          <div style="font-size:1.75rem;font-weight:800;color:#dc2626;letter-spacing:-0.03em;line-height:1">buch</div>
+        </div>
+      </div>
+
+      <!-- Nav simulation dark -->
+      <div style="width:100%">
+        <div class="preview-label preview-label-dark" style="margin-bottom:0.5rem">In der Navigation</div>
+        <div class="nav-sim">
+          <div style="display:flex;align-items:center;gap:8px">
+            <svg width="22" height="22" viewBox="0 0 52 52" fill="none">
+              <rect x="4" y="8" width="44" height="36" rx="20" fill="#dc2626"/>
+              <ellipse cx="26" cy="24" rx="15" ry="12" fill="#0f0f0f"/>
+              <ellipse cx="21" cy="20" rx="6" ry="4" fill="rgba(255,255,255,0.08)"/>
+              <rect x="20" y="41" width="12" height="7" rx="3.5" fill="#dc2626"/>
+              <circle cx="6" cy="26" r="4" fill="#b91c1c"/>
+              <circle cx="46" cy="26" r="4" fill="#b91c1c"/>
+            </svg>
+            <span style="font-size:0.875rem;font-weight:700;color:#fff;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+          </div>
+          <div class="nav-links-sim">
+            <span class="nav-link-sim">Features</span>
+            <span class="nav-link-sim">Für wen?</span>
+            <span class="nav-cta-sim">Vormerken</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-light">
+      <div style="display:flex;align-items:center;gap:8px">
+        <svg width="22" height="22" viewBox="0 0 52 52" fill="none">
+          <rect x="4" y="8" width="44" height="36" rx="20" fill="#dc2626"/>
+          <ellipse cx="26" cy="24" rx="15" ry="12" fill="#111"/>
+          <ellipse cx="21" cy="20" rx="6" ry="4" fill="rgba(255,255,255,0.12)"/>
+          <rect x="20" y="41" width="12" height="7" rx="3.5" fill="#dc2626"/>
+          <circle cx="6" cy="26" r="4" fill="#b91c1c"/>
+          <circle cx="46" cy="26" r="4" fill="#b91c1c"/>
+        </svg>
+        <span style="font-size:0.9rem;font-weight:700;color:#111;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+      </div>
+      <div style="font-size:0.6875rem;color:#bbb">auf hellem Hintergrund</div>
+    </div>
+  </div>
+
+  <!-- ── B: MINIMAL MARK ── -->
+  <div class="card" onclick="this.classList.toggle('selected')">
+    <div class="card-header">
+      <div class="card-letter">B</div>
+      <div>
+        <div class="card-meta-name">Kompaktes Zeichen</div>
+        <div class="card-meta-desc">Abstrahierter Maske-Umriss, sehr clean</div>
+      </div>
+    </div>
+
+    <div class="preview-dark">
+      <div class="preview-label preview-label-dark">Groß</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <!-- ICON B: cleaner, more abstract -->
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <!-- mask outline only, stroke-based -->
+          <rect x="5" y="10" width="46" height="34" rx="17" fill="none" stroke="#dc2626" stroke-width="3.5"/>
+          <!-- visor -->
+          <ellipse cx="28" cy="25" rx="14" ry="10" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+          <!-- center bridge (nose bridge) -->
+          <line x1="28" y1="35" x2="28" y2="42" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- valve circle -->
+          <circle cx="28" cy="46" r="3.5" fill="#dc2626"/>
+          <!-- side ports -->
+          <line x1="5" y1="27" x2="0" y2="27" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="51" y1="27" x2="56" y2="27" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div style="font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1">Atemschutz</div>
+          <div style="font-size:1.75rem;font-weight:800;color:#dc2626;letter-spacing:-0.03em;line-height:1.1">buch</div>
+        </div>
+      </div>
+
+      <div style="width:100%">
+        <div class="preview-label preview-label-dark" style="margin-bottom:0.5rem">In der Navigation</div>
+        <div class="nav-sim">
+          <div style="display:flex;align-items:center;gap:9px">
+            <svg width="24" height="24" viewBox="0 0 56 56" fill="none">
+              <rect x="5" y="10" width="46" height="34" rx="17" fill="none" stroke="#dc2626" stroke-width="4"/>
+              <ellipse cx="28" cy="25" rx="14" ry="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+              <line x1="28" y1="35" x2="28" y2="42" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="28" cy="46" r="3.5" fill="#dc2626"/>
+            </svg>
+            <span style="font-size:0.875rem;font-weight:700;color:#fff;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+          </div>
+          <div class="nav-links-sim">
+            <span class="nav-link-sim">Features</span>
+            <span class="nav-link-sim">Für wen?</span>
+            <span class="nav-cta-sim">Vormerken</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-light">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="24" height="24" viewBox="0 0 56 56" fill="none">
+          <rect x="5" y="10" width="46" height="34" rx="17" fill="none" stroke="#dc2626" stroke-width="4"/>
+          <ellipse cx="28" cy="25" rx="14" ry="10" fill="none" stroke="#dc2626" stroke-width="3"/>
+          <line x1="28" y1="35" x2="28" y2="42" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="46" r="3.5" fill="#dc2626"/>
+        </svg>
+        <span style="font-size:0.9rem;font-weight:700;color:#111;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+      </div>
+      <div style="font-size:0.6875rem;color:#bbb">auf hellem Hintergrund</div>
+    </div>
+  </div>
+
+  <!-- ── C: SHIELD BADGE ── -->
+  <div class="card" onclick="this.classList.toggle('selected')">
+    <div class="card-header">
+      <div class="card-letter">C</div>
+      <div>
+        <div class="card-meta-name">Wappen + Schriftzug</div>
+        <div class="card-meta-desc">Schildform mit Maske — institutionell, Feuerwehr-nah</div>
+      </div>
+    </div>
+
+    <div class="preview-dark">
+      <div class="preview-label preview-label-dark">Groß</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <!-- ICON C: shield with mask inside -->
+        <svg width="48" height="56" viewBox="0 0 48 56" fill="none">
+          <!-- shield shape -->
+          <path d="M24 2 L44 10 L44 30 C44 42 24 54 24 54 C24 54 4 42 4 30 L4 10 Z" fill="#dc2626"/>
+          <!-- inner mask simplified -->
+          <rect x="11" y="15" width="26" height="20" rx="10" fill="#0f0f0f" opacity="0.8"/>
+          <ellipse cx="24" cy="23" rx="8" ry="6" fill="rgba(255,255,255,0.07)"/>
+          <rect x="20" y="33" width="8" height="5" rx="2.5" fill="#dc2626" opacity="0.9"/>
+          <!-- shield highlight -->
+          <path d="M24 4 L42 11.5 L42 13 L24 5.5 Z" fill="rgba(255,255,255,0.12)"/>
+        </svg>
+        <div>
+          <div style="font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.1">Atemschutz</div>
+          <div style="font-size:1.75rem;font-weight:800;color:#dc2626;letter-spacing:-0.03em;line-height:1.1">buch</div>
+        </div>
+      </div>
+
+      <div style="width:100%">
+        <div class="preview-label preview-label-dark" style="margin-bottom:0.5rem">In der Navigation</div>
+        <div class="nav-sim">
+          <div style="display:flex;align-items:center;gap:9px">
+            <svg width="20" height="24" viewBox="0 0 48 56" fill="none">
+              <path d="M24 2 L44 10 L44 30 C44 42 24 54 24 54 C24 54 4 42 4 30 L4 10 Z" fill="#dc2626"/>
+              <rect x="11" y="15" width="26" height="20" rx="10" fill="#0f0f0f" opacity="0.8"/>
+              <ellipse cx="24" cy="23" rx="8" ry="6" fill="rgba(255,255,255,0.07)"/>
+              <rect x="20" y="33" width="8" height="5" rx="2.5" fill="#dc2626" opacity="0.9"/>
+            </svg>
+            <span style="font-size:0.875rem;font-weight:700;color:#fff;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+          </div>
+          <div class="nav-links-sim">
+            <span class="nav-link-sim">Features</span>
+            <span class="nav-link-sim">Für wen?</span>
+            <span class="nav-cta-sim">Vormerken</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-light">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="20" height="24" viewBox="0 0 48 56" fill="none">
+          <path d="M24 2 L44 10 L44 30 C44 42 24 54 24 54 C24 54 4 42 4 30 L4 10 Z" fill="#dc2626"/>
+          <rect x="11" y="15" width="26" height="20" rx="10" fill="#111" opacity="0.8"/>
+          <ellipse cx="24" cy="23" rx="8" ry="6" fill="rgba(255,255,255,0.1)"/>
+          <rect x="20" y="33" width="8" height="5" rx="2.5" fill="#dc2626" opacity="0.9"/>
+        </svg>
+        <span style="font-size:0.9rem;font-weight:700;color:#111;letter-spacing:-0.02em">Atemschutz<span style="color:#dc2626">buch</span></span>
+      </div>
+      <div style="font-size:0.6875rem;color:#bbb">auf hellem Hintergrund</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Single-select behavior
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+</script>
+</body>
+</html>
