@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atemschutzbuch — Digital. Normkonform. Papierlos.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #d4d4d4;
+      padding: 2rem 5%;
+    }
+
+    .page {
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* ─────────────────────────────────────────
+       TOP BAR
+    ───────────────────────────────────────── */
+    .top-bar {
+      background: #dc2626;
+      padding: 0.65rem 2rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .top-bar-text { font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.95); }
+    .top-bar-pill {
+      background: rgba(255,255,255,0.22);
+      border-radius: 100px;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.5625rem; font-weight: 700;
+      color: #fff; letter-spacing: 0.06em; text-transform: none;
+    }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    .nav {
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 0.875rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 0; }
+    .logo-text { font-size: 1.625rem; font-weight: 800; color: #0f0f0f; letter-spacing: -0.025em; margin-left: -0.375rem; }
+    .logo-red { color: #dc2626; }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-link { font-size: 1rem; color: #6b7280; font-weight: 500; cursor: pointer; }
+    .nav-cta {
+      background: #dc2626; color: #fff;
+      font-size: 0.8125rem; font-weight: 600;
+      padding: 0.45rem 1rem; border-radius: 7px;
+      cursor: pointer;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: #fff;
+    }
+    .hero-left {
+      padding: 3.5rem 2.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .eyebrow {
+      font-size: 0.6875rem; font-weight: 700;
+      color: #dc2626; letter-spacing: 0.07em; text-transform: none;
+      margin-bottom: 0.875rem;
+    }
+    .headline {
+      font-size: 2.25rem; font-weight: 800;
+      color: #0f0f0f; line-height: 1.15; letter-spacing: -0.03em;
+      margin-bottom: 1rem; white-space: nowrap;
+    }
+    .sub {
+      font-size: 0.9375rem; color: #6b7280; line-height: 1.65;
+      margin-bottom: 1.75rem;
+    }
+    .cta-row { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 2rem; }
+    .btn-primary {
+      background: #dc2626; color: #fff;
+      font-size: 0.875rem; font-weight: 600;
+      padding: 0.625rem 1.375rem; border-radius: 8px;
+      font-family: inherit; cursor: pointer; border: none;
+    }
+    .btn-ghost { color: #374151; font-size: 0.875rem; font-weight: 500; cursor: pointer; }
+    .trust-row { display: flex; gap: 1.25rem; }
+    .trust-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: #9ca3af; font-weight: 500; }
+    .trust-check {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #dcfce7; display: flex; align-items: center; justify-content: center;
+      font-size: 0.5rem; color: #16a34a; font-weight: 700; flex-shrink: 0;
+    }
+
+    .hero-right {
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .hero-right::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(220,38,38,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-mode-btn {
+      position: absolute; top: 0.875rem; right: 0.875rem; z-index: 10;
+      background: rgba(0,0,0,0.07); border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 6px; padding: 0.3rem 0.5rem;
+      font-size: 0.75rem; cursor: pointer; line-height: 1;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .hero-right.light .hero-mode-btn {
+      background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.15);
+    }
+
+    /* Browser window — dark mode default */
+    .browser-window {
+      width: 100%; max-width: 580px;
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.12);
+      position: relative; z-index: 1;
+      border: 1px solid rgba(0,0,0,0.08);
+      --bw-chrome:    #252525;
+      --bw-chrome-b:  rgba(255,255,255,0.06);
+      --bw-url-bg:    rgba(255,255,255,0.07);
+      --bw-url-c:     rgba(255,255,255,0.35);
+      --bw-body:      #1a1a1a;
+      --bw-sidebar:   #141414;
+      --bw-sidebar-b: rgba(255,255,255,0.05);
+      --bw-si-c:      rgba(255,255,255,0.4);
+      --bw-si-act-bg: rgba(220,38,38,0.12);
+      --bw-si-act-c:  #ef4444;
+      --bw-header:    #1e1e1e;
+      --bw-header-b:  rgba(255,255,255,0.06);
+      --bw-title-c:   rgba(255,255,255,0.55);
+      --bw-label-c:   rgba(255,255,255,0.28);
+      --bw-value-c:   rgba(255,255,255,0.82);
+      --bw-divider:   rgba(255,255,255,0.05);
+      --bw-action-b:  rgba(255,255,255,0.06);
+      --bw-ghost-bg:  rgba(255,255,255,0.06);
+      --bw-ghost-c:   rgba(255,255,255,0.4);
+      --bw-ghost-border: rgba(255,255,255,0.1);
+    }
+    .browser-window.light {
+      border-color: rgba(0,0,0,0.1);
+      --bw-chrome:    #f0f0f0;
+      --bw-chrome-b:  #e0e0e0;
+      --bw-url-bg:    #e8e8e8;
+      --bw-url-c:     #6b7280;
+      --bw-body:      #ffffff;
+      --bw-sidebar:   #f5f5f5;
+      --bw-sidebar-b: #e5e7eb;
+      --bw-si-c:      #6b7280;
+      --bw-si-act-bg: #fef2f2;
+      --bw-si-act-c:  #dc2626;
+      --bw-header:    #fafafa;
+      --bw-header-b:  #e5e7eb;
+      --bw-title-c:   #374151;
+      --bw-label-c:   #9ca3af;
+      --bw-value-c:   #111111;
+      --bw-divider:   #f3f4f6;
+      --bw-action-b:  #e5e7eb;
+      --bw-ghost-bg:  #f3f4f6;
+      --bw-ghost-c:   #6b7280;
+      --bw-ghost-border: #e5e7eb;
+    }
+
+    /* Chrome bar */
+    .browser-chrome {
+      background: var(--bw-chrome);
+      border-bottom: 1px solid var(--bw-chrome-b);
+      padding: 0.5rem 0.75rem;
+      display: flex; align-items: center; gap: 0.625rem;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .browser-dots { display: flex; gap: 0.3rem; }
+    .browser-url-bar {
+      flex: 1; background: var(--bw-url-bg);
+      border-radius: 5px; padding: 0.25rem 0.625rem;
+      font-size: 0.5625rem; color: var(--bw-url-c);
+      font-weight: 500; letter-spacing: 0.01em;
+    }
+    .mode-switcher {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.875rem; line-height: 1; padding: 0.1rem;
+      opacity: 0.6; transition: opacity 0.15s;
+      flex-shrink: 0;
+    }
+    .mode-switcher:hover { opacity: 1; }
+
+    /* App shell */
+    .app-shell {
+      display: flex; background: var(--bw-body);
+    }
+    .app-sidebar {
+      width: 100px; flex-shrink: 0;
+      background: var(--bw-sidebar);
+      border-right: 1px solid var(--bw-sidebar-b);
+      padding: 0.625rem 0;
+    }
+    .sidebar-item {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.5625rem; font-weight: 600;
+      color: var(--bw-si-c);
+      display: flex; align-items: center; gap: 0.35rem;
+    }
+    .sidebar-item.active {
+      background: var(--bw-si-act-bg);
+      color: var(--bw-si-act-c);
+      border-right: 2px solid #dc2626;
+    }
+    .sidebar-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: currentColor; opacity: 0.5; flex-shrink: 0;
+    }
+    .app-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* App header */
+    .app-topbar {
+      background: var(--bw-header);
+      border-bottom: 1px solid var(--bw-header-b);
+      padding: 0.5rem 0.75rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .app-topbar-title { font-size: 0.5625rem; font-weight: 600; color: var(--bw-title-c); }
+    .status-badge {
+      font-size: 0.45rem; font-weight: 700; letter-spacing: 0.04em;
+      padding: 0.15rem 0.4rem; border-radius: 3px;
+      background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.3); color: #ef4444;
+    }
+
+    /* Entry */
+    .app-entry { padding: 0.625rem 0.75rem; display: flex; flex-direction: column; gap: 0; }
+    .entry-row {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 0;
+    }
+    .entry-label {
+      font-size: 0.5rem; color: var(--bw-label-c); width: 64px; flex-shrink: 0;
+      font-weight: 500; text-transform: none; letter-spacing: 0.04em;
+    }
+    .entry-value { font-size: 0.5625rem; color: var(--bw-value-c); font-weight: 500; }
+    .entry-divider { height: 1px; background: var(--bw-divider); }
+    .pending-tag {
+      font-size: 0.45rem; font-weight: 700; padding: 0.15rem 0.35rem; border-radius: 3px;
+      background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #f59e0b;
+      margin-left: auto; white-space: nowrap;
+    }
+    .app-actions {
+      padding: 0.5rem 0.75rem;
+      border-top: 1px solid var(--bw-action-b);
+      display: flex; gap: 0.375rem;
+    }
+    .app-btn { font-size: 0.5rem; font-weight: 700; padding: 0.3rem 0.625rem; border-radius: 4px; font-family: inherit; cursor: pointer; }
+    .app-btn-primary { background: #dc2626; color: #fff; border: none; }
+    .app-btn-ghost {
+      background: var(--bw-ghost-bg); color: var(--bw-ghost-c);
+      border: 1px solid var(--bw-ghost-border);
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION BASE
+    ───────────────────────────────────────── */
+    .section { padding: 3rem 2.5rem; }
+    .section-eyebrow {
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: none;
+      color: #dc2626; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 1.625rem; font-weight: 800;
+      color: #0f0f0f; letter-spacing: -0.025em; line-height: 1.2;
+      margin-bottom: 0.625rem; white-space: nowrap;
+    }
+    .section-sub {
+      font-size: 0.9rem; color: #6b7280; line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* ─────────────────────────────────────────
+       PROBLEM
+    ───────────────────────────────────────── */
+    .problem { background: #f9fafb; border-top: 1px solid #f0f0f0; }
+    .problem-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+    }
+    .problem-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-top: 3px solid #dc2626;
+      border-radius: 0 0 8px 8px;
+      padding: 1.125rem 1rem;
+    }
+    .problem-card-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .problem-card-title { font-size: 0.8125rem; font-weight: 700; color: #111; margin-bottom: 0.375rem; }
+    .problem-card-text { font-size: 0.75rem; color: #9ca3af; line-height: 1.55; }
+
+    /* ─────────────────────────────────────────
+       FEATURES
+    ───────────────────────────────────────── */
+    .features { background: #fff; border-top: 1px solid #f0f0f0; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .feature-card {
+      border: 1px solid #e5e7eb; border-radius: 10px;
+      padding: 1.25rem; background: #fff;
+    }
+    .feature-mockup {
+      background: #f9fafb; border-radius: 6px; height: 100px;
+      margin-bottom: 0.875rem;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid #f0f0f0;
+    }
+    .feature-mockup-label { font-size: 0.625rem; color: #9ca3af; font-weight: 500; }
+    .feature-title { font-size: 0.875rem; font-weight: 700; color: #0f0f0f; margin-bottom: 0.3rem; }
+    .feature-text { font-size: 0.75rem; color: #6b7280; line-height: 1.55; }
+
+    /* ─────────────────────────────────────────
+       WORKFLOW
+    ───────────────────────────────────────── */
+    .workflow { background: #0f0f0f; border-top: 1px solid rgba(255,255,255,0.05); }
+    .workflow .section-title { color: #fff; }
+    .workflow .section-sub { color: rgba(255,255,255,0.45); }
+    .workflow .section-eyebrow { color: #ef4444; }
+    .workflow-placeholder {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+    }
+    .workflow-placeholder-label { font-size: 0.75rem; color: rgba(255,255,255,0.25); font-weight: 500; }
+
+    /* ─────────────────────────────────────────
+       FÜR WEN
+    ───────────────────────────────────────── */
+    .fuerwen { background: #f9fafb; border-top: 1px solid #f0f0f0; }
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .persona-card {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+      padding: 1.5rem 1.25rem;
+    }
+    .persona-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: #fef2f2; display: flex; align-items: center; justify-content: center;
+      font-size: 1.125rem; margin-bottom: 0.875rem;
+    }
+    .persona-role { font-size: 0.6875rem; font-weight: 700; color: #dc2626; text-transform: none; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .persona-title { font-size: 0.9375rem; font-weight: 700; color: #0f0f0f; margin-bottom: 0.5rem; }
+    .persona-text { font-size: 0.75rem; color: #6b7280; line-height: 1.6; }
+    .persona-benefit {
+      margin-top: 0.875rem; padding-top: 0.875rem;
+      border-top: 1px solid #f3f4f6;
+      font-size: 0.6875rem; color: #0f0f0f; font-weight: 600;
+    }
+
+    /* ─────────────────────────────────────────
+       FAQ
+    ───────────────────────────────────────── */
+    .faq { background: #fff; border-top: 1px solid #f0f0f0; }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item {
+      border: 1px solid #e5e7eb; border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.125rem 1.25rem;
+      font-size: 0.9375rem; font-weight: 700; color: #0f0f0f;
+      cursor: pointer; list-style: none; gap: 1rem;
+    }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-question::after {
+      content: '+'; font-size: 1.25rem; font-weight: 400;
+      color: #dc2626; flex-shrink: 0; line-height: 1;
+    }
+    details[open] .faq-question::after { content: '−'; }
+    .faq-answer {
+      padding: 0 1.25rem 1.125rem;
+      font-size: 0.875rem; color: #6b7280; line-height: 1.65;
+      border-top: 1px solid #f3f4f6;
+      padding-top: 1rem;
+    }
+
+    /* ─────────────────────────────────────────
+       CTA
+    ───────────────────────────────────────── */
+    .cta-section {
+      background: #dc2626;
+      padding: 3rem 2.5rem;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .cta-eyebrow { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.07em; text-transform: none; color: rgba(255,255,255,0.65); margin-bottom: 0.75rem; }
+    .cta-title { font-size: 1.875rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.75rem; white-space: nowrap; }
+    .cta-sub { font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 2rem; }
+    .cta-form { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 0.625rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; }
+    .form-input {
+      padding: 0.625rem 0.875rem;
+      border-radius: 7px; border: 1.5px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.12);
+      font-family: inherit; font-size: 0.8125rem;
+      color: #fff; outline: none;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.5); }
+    .form-submit {
+      background: #fff; color: #dc2626;
+      font-size: 0.9375rem; font-weight: 700;
+      padding: 0.75rem; border-radius: 8px;
+      font-family: inherit; cursor: pointer; border: none; margin-top: 0.25rem;
+    }
+    .form-hint { font-size: 0.6875rem; color: rgba(255,255,255,0.4); margin-top: 0.375rem; }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    .footer {
+      background: #0f0f0f;
+      padding: 1.125rem 2.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+    }
+    .footer-text { font-size: 0.6875rem; color: rgba(255,255,255,0.28); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar"></div>
+
+  <!-- LOGO -->
+  <div class="nav">
+    <div class="logo-wrap">
+      <img src="logo.png" style="height:76px;width:76px;object-fit:contain;flex-shrink:0;display:block" alt="Atemschutzbuch Logo">
+      <div class="logo-text">Atemschutz<span class="logo-red">buch</span></div>
+    </div>
+  </div>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow">FwDV 7 · §14 GefStoffV · DSGVO-konform</div>
+      <h1 class="headline">Das Atemschutzbuch. Endlich digital.</h1>
+      <p class="sub">Die Atemschutzdokumentation eurer Feuerwehr — papierlos, normkonform und von jedem Gerät.</p>
+      <div class="cta-row">
+        <button class="btn-primary" onclick="document.getElementById('vormerken').scrollIntoView({behavior:'smooth'})">Kontakt aufnehmen</button>
+      </div>
+    </div>
+    <div class="hero-right" id="heroRight">
+      <button class="hero-mode-btn" onclick="toggleAppMode()" id="modeBtn" title="Light/Dark umschalten">☀️</button>
+
+      <div class="browser-window" id="appMockup">
+        <!-- Browser chrome -->
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <div class="dot" style="background:#ff5f57"></div>
+            <div class="dot" style="background:#febc2e"></div>
+            <div class="dot" style="background:#28c840"></div>
+          </div>
+          <div class="browser-url-bar">app.atemschutzbuch.de/einsaetze/2026-05-24</div>
+        </div>
+        <!-- App shell -->
+        <div class="app-shell">
+          <!-- Sidebar -->
+          <div class="app-sidebar">
+            <div class="sidebar-item active"><div class="sidebar-dot"></div> Einsätze</div>
+            <div class="sidebar-item"><div class="sidebar-dot"></div> Übungen</div>
+            <div class="sidebar-item"><div class="sidebar-dot"></div> AGTs</div>
+            <div class="sidebar-item"><div class="sidebar-dot"></div> Dashboard</div>
+          </div>
+          <!-- Main -->
+          <div class="app-main">
+            <div class="app-topbar">
+              <div class="app-topbar-title">Einsatz — 24.05.2026 · FF Lemgo</div>
+              <div class="status-badge">OFFEN</div>
+            </div>
+            <div class="app-entry">
+              <div class="entry-row">
+                <div class="entry-label">Einsatzstelle</div>
+                <div class="entry-value">Industriestr. 14, Lemgo</div>
+              </div>
+              <div class="entry-divider"></div>
+              <div class="entry-row">
+                <div class="entry-label">Einsatzart</div>
+                <div class="entry-value">Brandeinsatz (B2)</div>
+              </div>
+              <div class="entry-divider"></div>
+              <div class="entry-row">
+                <div class="entry-label">Dauer</div>
+                <div class="entry-value">47 min</div>
+              </div>
+              <div class="entry-divider"></div>
+              <div class="entry-row">
+                <div class="entry-label">Maske · Gerät</div>
+                <div class="entry-value">M-04 · PA-07 · Überdruck</div>
+              </div>
+              <div class="entry-divider"></div>
+              <div class="entry-row">
+                <div class="entry-label">AGT</div>
+                <div class="entry-value">M. Hoffmann</div>
+                <div class="pending-tag">Freigabe ausstehend</div>
+              </div>
+            </div>
+            <div class="app-actions">
+              <button class="app-btn app-btn-primary">Freigeben</button>
+              <button class="app-btn app-btn-ghost">Ablehnen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section problem">
+    <div class="section-eyebrow">Das Problem heute</div>
+    <h2 class="section-title">Papier versagt genau dann, wenn es zählt.</h2>
+    <p class="section-sub">Die wenigsten Feuerwehren wissen: Die Gemeinde haftet für lückenlose Nachweise — 40 Jahre lang. Das Buch beim AGT zu Hause reicht nicht.</p>
+    <div class="problem-cards">
+      <div class="problem-card">
+        <div class="problem-card-icon">✍️</div>
+        <div class="problem-card-title">Handschrift unleserlich</div>
+        <div class="problem-card-text">Im Einsatz oft nachträglich nicht mehr rekonstruierbar</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">📋</div>
+        <div class="problem-card-title">Lücken im Buch</div>
+        <div class="problem-card-text">Fehlende Einträge werden erst Wochen später entdeckt</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">🕐</div>
+        <div class="problem-card-title">Freigabe dauert</div>
+        <div class="problem-card-text">Wehrführer muss physisch anwesend sein um zu unterschreiben</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">⚖️</div>
+        <div class="problem-card-title">Haftung bei der Gemeinde</div>
+        <div class="problem-card-text">§14 GefStoffV: 40 Jahre Aufbewahrungspflicht — kaum einer weiß es</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="section features">
+    <div class="section-eyebrow">Features</div>
+    <h2 class="section-title">Alles was ihr braucht. Nichts was ihr nicht braucht.</h2>
+    <p class="section-sub">Entwickelt für freiwillige Feuerwehren — nicht für Konzerne. Jedes Feature hat einen Grund.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-mockup"><span class="feature-mockup-label">Mockup folgt</span></div>
+        <div class="feature-title">Einsatz- & Übungserfassung</div>
+        <div class="feature-text">AGT trägt selbst ein. Alle FwDV-7-Pflichtfelder. Unter 2 Minuten.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-mockup"><span class="feature-mockup-label">Mockup folgt</span></div>
+        <div class="feature-title">Freigabe-Workflow</div>
+        <div class="feature-text">Gruppenführer, Beauftragter oder Wehrführer — konfigurierbar, ein Klick.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-mockup"><span class="feature-mockup-label">Mockup folgt</span></div>
+        <div class="feature-title">G26.3 & Belastungsübung</div>
+        <div class="feature-text">Ablaufdaten im Blick. Automatische Warnung bevor die Frist platzt.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-mockup"><span class="feature-mockup-label">Mockup folgt</span></div>
+        <div class="feature-title">§14 GefStoffV / KoAtEx</div>
+        <div class="feature-text">Expositionsdokumentation automatisch mitgeführt. 40 Jahre Archiv.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-mockup"><span class="feature-mockup-label">Mockup folgt</span></div>
+        <div class="feature-title">Dashboard & Auswertungen</div>
+        <div class="feature-text">Wer ist tauglich? Wer hat offene Einträge? Auf einen Blick.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-mockup"><span class="feature-mockup-label">Mockup folgt</span></div>
+        <div class="feature-title">PDF / CSV Export</div>
+        <div class="feature-text">Jahresbericht per Knopfdruck. Druckfertig, FwDV-7-konform.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="section workflow">
+    <div class="section-eyebrow">So funktioniert's</div>
+    <h2 class="section-title">Freigabe in 3 Schritten.</h2>
+    <p class="section-sub">Vom Einsatz bis zum rechtssicheren Eintrag — ohne ein einziges Mal zum Gerätehaus fahren.</p>
+    <div class="workflow-placeholder">
+      <div class="workflow-placeholder-label">Workflow-Grafik folgt</div>
+    </div>
+  </section>
+
+  <!-- FÜR WEN -->
+  <section id="fuerwen" class="section fuerwen">
+    <div class="section-eyebrow">Für wen</div>
+    <h2 class="section-title">Drei Rollen. Ein System.</h2>
+    <p class="section-sub">Jeder bekommt genau das, was er braucht — nicht mehr, nicht weniger.</p>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-icon">🧰</div>
+        <div class="persona-role">AGT</div>
+        <div class="persona-title">Atemschutzgeräteträger</div>
+        <div class="persona-text">Einsatz oder Übung in unter 2 Minuten eintragen. Keine unleserliche Handschrift, kein vergessenes Buch.</div>
+        <div class="persona-benefit">→ Eintrag in 2 min, jederzeit und überall</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">📊</div>
+        <div class="persona-role">Beauftragter</div>
+        <div class="persona-title">Atemschutzbeauftragter</div>
+        <div class="persona-text">Freigaben mit einem Klick. Alle AGTs und ihre G26.3-Fristen im Blick — ohne Heftdurchsuchen.</div>
+        <div class="persona-benefit">→ Freigabe per Klick, Übersicht immer aktuell</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🏛️</div>
+        <div class="persona-role">Wehrführung</div>
+        <div class="persona-title">Wehrführer &amp; Gemeinde</div>
+        <div class="persona-text">Die Gemeinde als Träger erfüllt ihre 40-jährige Nachweispflicht — automatisch, lückenlos, prüffest.</div>
+        <div class="persona-benefit">→ Haftungsrisiko eliminiert, kein Aufwand</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Häufige Fragen.</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-question">Ist Atemschutzbuch wirklich rechtssicher nach §14 GefStoffV?</summary>
+        <div class="faq-answer">Ja. Alle Einträge werden mit Zeitstempel und Benutzerkennung gespeichert und sind unveränderbar archiviert — 40 Jahre lang. Das erfüllt die Anforderungen der GefStoffV sowie der DGUV-Grundsätze für den Atemschutzeinsatz.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Brauchen unsere AGTs ein Smartphone oder besondere Hardware?</summary>
+        <div class="faq-answer">Nein. Atemschutzbuch läuft im Browser — auf jedem Smartphone, Tablet oder PC. Keine App-Installation, keine spezielle Hardware. Ein modernes Gerät mit Internetzugang reicht aus.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Was passiert mit unseren Daten? Wo werden sie gespeichert?</summary>
+        <div class="faq-answer">Eure Daten werden ausschließlich auf deutschen Servern gespeichert und nicht an Dritte weitergegeben. Atemschutzbuch ist DSGVO-konform. Ihr könnt eure Daten jederzeit exportieren oder löschen lassen.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="vormerken" class="cta-section">
+    <div class="cta-eyebrow">Kontakt aufnehmen</div>
+    <h2 class="cta-title">Bereit, wenn ihr es seid.</h2>
+    <p class="cta-sub">Tragt euch ein — wir informieren euch sobald die Beta startet. Kein Spam, keine Verpflichtung.</p>
+    <form class="cta-form" id="kontakt">
+      <div class="form-row">
+        <input class="form-input" placeholder="Name" type="text" name="name">
+        <input class="form-input" placeholder="Feuerwehr" type="text" name="feuerwehr">
+      </div>
+      <input class="form-input" placeholder="E-Mail-Adresse" type="email" name="email">
+      <div class="form-row">
+        <select class="form-input" name="agts" style="color:rgba(255,255,255,0.5)">
+          <option value="" disabled selected>Anzahl AGTs</option>
+          <option>unter 20</option>
+          <option>20–40</option>
+          <option>40–80</option>
+          <option>über 80</option>
+        </select>
+        <input class="form-input" placeholder="Bundesland" type="text" name="bundesland">
+      </div>
+      <button class="form-submit" type="submit">Interesse bekunden</button>
+      <div class="form-hint">Eure Daten werden nicht weitergegeben. Abmeldung jederzeit möglich.</div>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-text">Made with</span>
+    <span style="font-size:0.8125rem">❤️</span>
+    <span class="footer-text">in Lemgo</span>
+  </footer>
+
+</div>
+<script>
+  function toggleAppMode() {
+    const isLight = document.getElementById('appMockup').classList.toggle('light');
+    document.getElementById('modeBtn').textContent = isLight ? '🌙' : '☀️';
+  }
+</script>
+</body>
+</html>

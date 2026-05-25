@@ -49,11 +49,11 @@ Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 
 | Token | Wert |
 |---|---|
-| `--color-base` | `#1a1a1a` |
-| `--color-surface` | `#f5f4f0` |
-| `--color-accent` | `#CC2222` |
-| `--font-display` | Fraunces, Georgia, serif |
-| `--font-body` | Source Serif 4, Georgia, serif |
+| `--color-accent` | `#dc2626` |
+| `--color-dark` | `#0f0f0f` |
+| `--color-surface` | `#f9fafb` |
+| `--color-muted` | `#6b7280` |
+| `--font` | DM Sans (vollständig serifenlos, kein zweiter Font) |
 
 ---
 
@@ -70,3 +70,5 @@ Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 cd website/
 python3 -m http.server 8080
 ```
+
+Node.js ist nicht installiert — kein `npm`, `node` oder Node-basierter Dev-Server.
