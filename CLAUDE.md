@@ -40,7 +40,7 @@ Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 ## Tech-Constraints (website/)
 
 - Plain HTML + CSS + vanilla JS — kein Framework, kein Build-Step
-- Google Fonts CDN: Fraunces (Headings) + Source Serif 4 (Body)
+- Google Fonts CDN: DM Sans
 - Scripts am Ende von `<body>`
 
 ---

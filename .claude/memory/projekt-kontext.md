@@ -16,7 +16,8 @@ Digitales Atemschutzbuch für freiwillige Feuerwehren (Größe offen). Aktuelles
 
 **M1-Tickets:**
 - REN-48: Design Festlegung → Done (2026-05-24)
-- REN-35: One-Pager Konzept & Struktur → in Bearbeitung (Brainstorming läuft)
+- REN-35: One-Pager Konzept & Struktur → In Progress (website/index.html implementiert, 2026-05-25)
+- REN-54: Light/Dark Mode → Backlog, Low (Prototyp in Landing Page eingebaut)
 - REN-36: One-Pager Design & Implementierung
 - REN-37: Freigabe-Workflow interaktiv
 - REN-38: SVG App-Mockups

@@ -1,11 +1,11 @@
 ---
 name: design-system
-description: Abgenommenes Design-System für den Atemschutzbuch One-Pager (REN-48), mit Humanisierungsiteration aus REN-35-Brainstorming
+description: Abgenommenes Design-System für den Atemschutzbuch One-Pager, Stand 2026-05-25
 metadata:
   type: project
 ---
 
-Design wurde in REN-48 vom Nutzer abgenommen (2026-05-24). Humanisierung (Hero App-UI, Copy) in REN-35-Session iteriert.
+Design abgenommen in REN-48 (2026-05-24), iteriert in REN-35-Session (2026-05-25).
 
 **Typografie:** DM Sans, vollständig serifenlos. Kein zweiter Font.
 
@@ -16,47 +16,52 @@ Design wurde in REN-48 vom Nutzer abgenommen (2026-05-24). Humanisierung (Hero A
 - Weiß: `#ffffff`
 - Text gedämpft: `#6b7280`
 
-**Layout Hero:** Split — Text/CTA links, dunkles App-Mockup rechts.
+**Produktionsdatei:** `website/index.html` — deployed via Cloudflare Pages aus `website/`.
 
-**Hero App-Mockup (humanisiert):** Browser-Window mit Sidebar-Layout. Realistisches App-UI mit echten Feldern (Einsatzstelle, Einsatzart, Dauer, Maske·Gerät, AGT, Freigabe-Status) — kein abstraktes Punkte/Balken-Mockup mehr. Inhalte: FF Lemgo, 24.05.2026, Brandeinsatz.
+**Layout:** Seite als gerundete Box (`border-radius: 14px`, `overflow: hidden`) mit grauem Body-Hintergrund (`#d4d4d4`, `padding: 2rem 5%`).
 
-**Hero Eyebrow:** `FwDV 7 · §14 GefStoffV · DSGVO-konform`
+**Hero:** Split-Grid (1fr 1fr). Links: Copy + CTA. Rechts: App-Mockup, Hintergrund `#fff` (gleich wie links).
 
-**Trust-Badges (Hero):** Nur FwDV 7 und DSGVO. „Offline-fähig" wurde entfernt — keine bewusste Produktentscheidung.
+**Hero App-Mockup:** Browser-Window (`max-width: 580px`) mit Chrome-Bar (Traffic-Lights + URL-Leiste), Sidebar-Navigation (Einsätze / Übungen / AGTs / Dashboard) und Detailansicht eines Einsatzes. Dunkler Schatten (`box-shadow: 0 12px 48px rgba(0,0,0,0.28)`). Light/Dark-Switcher (☀️/🌙) positioniert absolut oben rechts in der Hero-Box — schaltet nur das Browser-Fenster, nicht den Hintergrund. Default: Dark Mode.
 
-**Logo:** Rote Kreismarke mit Atemschutzmaske (`logo.png` im Repo-Root). Icon links neben Wortmarke, gap 0, Icon 64px, Schriftzug 1.375rem/800.
+**Hero Eyebrow:** `FwDV 7 · §14 GefStoffV · DSGVO-konform` (normale Schreibweise, kein uppercase)
+
+**Trust-Badges:** Entfernt (wurden komplett aus der Seite genommen, 2026-05-25).
+
+**CTA-Button:** „Kontakt aufnehmen" (ehemals „Jetzt vormerken").
+
+**Eyebrows (alle roten Unterüberschriften):** `text-transform: none` — normale Groß-/Kleinschreibung, kein ALL-CAPS.
+
+**Logo:** `website/logo.png` (kopiert aus Repo-Root). Icon 76px, Wortmarke 1.625rem/800, `margin-left: -0.375rem` (Text nah am Icon).
 
 **Wortmarke:** `Atemschutz` (dunkel) + `buch` (#dc2626).
 
+**Kein Nav-Menü** — One-Pager braucht keines. Nur Logo + Wortmarke in eigenem Bereich unter dem roten Top-Streifen.
+
 **Section-Hintergründe (Reihenfolge):**
-1. Top-Bar → `#dc2626`
-2. Nav → `#ffffff`
-3. Hero → `#ffffff` links / `#0f0f0f` rechts
+1. Top-Bar → `#dc2626` (leer, nur als roter Akzentstreifen)
+2. Logo-Bereich → `#ffffff`
+3. Hero → `#ffffff` beidseitig
 4. Problem → `#f9fafb`
 5. Features → `#ffffff`
 6. Workflow → `#0f0f0f`
 7. Für wen → `#f9fafb`
-8. CTA → `#dc2626`
-9. Footer → `#0f0f0f`
+8. FAQ → `#ffffff`
+9. CTA → `#dc2626`
+10. Footer → `#0f0f0f`
 
 **Problem-Section (4 Cards):**
 1. Handschrift unleserlich
 2. Lücken im Buch
 3. Freigabe dauert
-4. Haftung bei der Gemeinde (§14 GefStoffV, 40 Jahre) — ersetzt "Papierverlust"
+4. Haftung bei der Gemeinde (§14 GefStoffV, 40 Jahre)
 
-**Problem-Section Intro-Copy:** Betont Gemeinde-Haftung und §14 GefStoffV als zentrales Argument.
+**FAQ-Section:** 3 aufklappbare Fragen (`<details>`/`<summary>`, kein JS). Themen: §14 GefStoffV Rechtssicherheit, Hardware-Anforderungen, Datenschutz/DSGVO.
 
 **Footer:** `Made with ❤️ in Lemgo` — kein weiterer Inhalt.
 
-**Stimmung:** Modern + Zuverlässig. SaaS-artig, kein Klischee-Feuerwehr-Look. Humanisiert durch echten Datensatz statt generische Platzhalter.
+**Stimmung:** Modern + Zuverlässig. SaaS-artig, kein Klischee-Feuerwehr-Look.
 
-**Aktuelles Mockup:** `.superpowers/brainstorm/one-pager-v1.html` — vollständiger One-Pager mit allen Sections. Produktionsstand: `website/index.html`.
+**Why:** Trust-Badges entfernt weil redundant (Eyebrow trägt dieselbe Info). Uppercase entfernt auf Wunsch — wirkt ruhiger. CTA-Text geändert weil „vormerken" zu unverbindlich klingt für Validierungszweck.
 
-**FAQ-Section:** Vorhanden im One-Pager (nach den anderen Sections, vor CTA).
-
-**Light/Dark-Switcher:** Im One-Pager als Prototyp eingebaut. Persistente Lösung (User-Preference in DB) ist REN-54 (Backlog, Low Priority).
-
-**Why:** Offline-fähig wurde nie als Feature beschlossen. 4. Problem-Card auf §14-GefStoffV-Haftung geändert weil das das stärkste und unbekannteste Argument ist.
-
-**How to apply:** Vor jeder Design- oder CSS-Entscheidung diese Tokens verwenden. Kein „Offline-fähig" mehr einbauen ohne explizite Produktentscheidung.
+**How to apply:** Vor jeder Design- oder CSS-Entscheidung diese Tokens verwenden. Kein „Offline-fähig" ohne explizite Produktentscheidung.
