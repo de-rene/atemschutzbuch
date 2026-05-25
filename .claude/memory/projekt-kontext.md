@@ -21,7 +21,7 @@ Digitales Atemschutzbuch für freiwillige Feuerwehren (Größe offen). Aktuelles
 - REN-36: One-Pager Design & Implementierung
 - REN-37: Freigabe-Workflow interaktiv
 - REN-38: SVG App-Mockups
-- REN-39: GitHub Repo & Cloudflare Pages Setup
+- REN-39: GitHub Repo & Cloudflare Pages Setup — CF Pages noch nicht eingerichtet
 - REN-40: Bedarfsvalidierung Interviews (internes Interview done 2026-05-24)
 - REN-53: Website-Fragebogen (ausfüllbar/versendbar)
 
@@ -51,6 +51,8 @@ Digitales Atemschutzbuch für freiwillige Feuerwehren (Größe offen). Aktuelles
 **Entscheidungsprozess Kunden:**
 - Wehrführung entscheidet, braucht Budget + IT-Freigabe der Gemeinde
 - Haupthindernisse: DSGVO, IT-Sicherheit, SaaS-Skepsis
+
+**Cloudflare Pages:** Noch nicht eingerichtet (Stand 2026-05-25). Wenn eingerichtet: zunächst Zugriff beschränken (CF Access oder Password), erst bei Fertigstellung öffentlich schalten (REN-55).
 
 **Why:** M1 ist Validierungsphase — erst One-Pager live, dann App bauen. Domain-Interview hat §14 GefStoffV als unbekanntes aber starkes Compliance-Argument bestätigt.
 

@@ -28,6 +28,10 @@ Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 
 ## Cloudflare Pages
 
+> **Noch nicht eingerichtet** (Stand 2026-05-25). Sobald aktiv: Zugriff zunächst auf interne Nutzer beschränken (CF Access oder Password-Protection). Öffentliche Live-Schaltung → REN-55.
+
+
+
 | Einstellung | Wert |
 |---|---|
 | Root directory | `website` |
