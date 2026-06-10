@@ -28,7 +28,7 @@ Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 
 ## Cloudflare Pages
 
-> **Noch nicht eingerichtet** (Stand 2026-05-25). Sobald aktiv: Zugriff zunächst auf interne Nutzer beschränken (CF Access oder Password-Protection). Öffentliche Live-Schaltung → REN-55.
+> **Eingerichtet** (Stand 2026-06-10). Live unter https://atemschutzbuch.pages.dev — aktuell **ohne Zugriffsbeschränkung** (CF Access / Password-Protection noch offen). Custom Domain `atemschutzbuch.de` noch nicht verknüpft. Öffentliche Live-Schaltung → REN-55.
 
 
 
