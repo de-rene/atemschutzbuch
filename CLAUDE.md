@@ -9,7 +9,7 @@ Kein Code schreiben, bevor es nicht explizit angewiesen wird. Nicht danach frage
 ## Projekt
 
 Digitales Atemschutzbuch für kleine freiwillige Feuerwehren (20–80 AGTs).
-Aktuelles Ziel: Bedarfsvalidierung via One-Pager Landing Page.
+Open Source / Self-hosted (Repo vorerst privat). Aktuelles Ziel: Bedarfsvalidierung via One-Pager Landing Page.
 
 Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 
@@ -19,25 +19,24 @@ Linear: https://linear.app/renek/project/atemschutzbuch-8cc8404438af
 
 ```
 /
-├── website/   ← CF Pages (Root: website/, Watch: website/**)
-├── app/       ← Später: App → VPS (Coolify oder GitHub Actions)
+├── website/   ← GitHub Pages (Branch: main, Folder: /website)
+├── app/       ← Später: App → VPS, Self-hosted (Docker)
 └── CLAUDE.md
 ```
 
 ---
 
-## Cloudflare Pages
+## GitHub Pages
 
-> **Eingerichtet** (Stand 2026-06-10). Live unter https://atemschutzbuch.pages.dev — aktuell **ohne Zugriffsbeschränkung** (CF Access / Password-Protection noch offen). Custom Domain `atemschutzbuch.de` noch nicht verknüpft. Öffentliche Live-Schaltung → REN-55.
-
-
+> Ablöst Cloudflare Pages (Grundsatzentscheidung 2026-06-18: OSS/Self-hosted). Einrichtung → REN-125. CF Pages löschen & Account schließen → REN-124.
 
 | Einstellung | Wert |
 |---|---|
-| Root directory | `website` |
-| Build command | *(leer)* |
-| Build output directory | `website` |
-| Build watch paths | `website/**` |
+| Branch | `main` |
+| Folder | `/website` |
+| URL (default) | `https://de-rene.github.io/atemschutzbuch/` |
+| Custom Domain | `atemschutzbuch.de` (optional, → REN-55) |
+| Build | *(kein Build-Step, plain HTML)* |
 
 ---
 
